@@ -36,6 +36,7 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .listRowBackground(book.rating == 1 ? Color.red.opacity(0.2) : Color(uiColor: .secondarySystemGroupedBackground))
                 }
                 .onDelete(perform: deleteBooks)
             }
