@@ -19,6 +19,10 @@ struct AddBookView: View {
     
     let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
     
+    private var isValidForm: Bool {
+        isValidField(title) && isValidField(author)
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -55,9 +59,14 @@ struct AddBookView: View {
                         dismiss()
                     }
                 }
+                .disabled(!isValidForm)
             }
             .navigationTitle("Add Book")
         }
+    }
+    
+    func isValidField(_ value: String) -> Bool {
+        !value.trimmingCharacters(in: .whitespaces).isEmpty
     }
 }
 
